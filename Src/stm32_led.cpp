@@ -12,13 +12,13 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
     led_GPIO_Pin = GPIO_Pin;
 }
 
-int Led::setOn(){
+void Led::setOn(){
     state=1;
 }
-int Led::setOff(){
+void Led::setOff(){
     state=0;
 }
-int Led::setFlash(){
+void Led::setFlash(){
     state=2;
 }
 
@@ -26,10 +26,10 @@ void Led::interrut_toutine(){
     switch (state)
     {
     case 1:
-        HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, SET);
+        HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, GPIO_PIN_SET);
         break;
     case 0:
-        HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, RESET);
+        HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, GPIO_PIN_RESET);
         break;
     case 2:
         HAL_GPIO_TogglePin(led_GPIOx,led_GPIO_Pin);

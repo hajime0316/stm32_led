@@ -16,9 +16,9 @@ private:
 	uint16_t led_GPIO_Pin;
 public:
 	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
-	int setOn();
-	int setOff();
-	int setFlash();
+	void setOn();
+	void setOff();
+	void setFlash();
 	void interrut_toutine();
 };
 
