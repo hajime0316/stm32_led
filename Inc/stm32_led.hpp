@@ -27,6 +27,7 @@ public:
 	void setOff();
 	void setFlash();
 	void interrut_toutine();
+	void set_flash_period(unsigned int flash_period);
 };
 
 #endif /* STM32_LED_HPP_ */
