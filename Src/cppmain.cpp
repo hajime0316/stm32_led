@@ -12,3 +12,9 @@ void setup(void) {
 void loop(void) {
 
 }
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HanleTypeDef *htim) {
+    if(htim->Instance == TIM6) {
+
+    }
+}
