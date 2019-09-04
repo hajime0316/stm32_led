@@ -6,7 +6,7 @@
 
 #include "stm32_led.hpp"
 
-Led led(GPIOD,GPIO_PIN_14);
+Led led(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
 
 void setup(void) {
 	HAL_TIM_Base_Start_IT(&htim6);
