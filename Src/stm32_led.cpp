@@ -14,6 +14,13 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
     led_GPIOx = GPIOx;
     led_GPIO_Pin = GPIO_Pin;
 }
+Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) {
+    state = LED_OFF;
+    led_GPIOx = GPIOx;
+    led_GPIO_Pin = GPIO_Pin;
+
+    this->led_on_pin_state = led_on_pin_state;
+}
 
 void Led::setOn(){
     state=LED_ON;
