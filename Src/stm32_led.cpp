@@ -47,9 +47,22 @@ void Led::interrut_toutine(){
         HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
         break;
     case LED_FLASH:
-        HAL_GPIO_TogglePin(led_GPIOx,led_GPIO_Pin);
+        static int flash_period_count = 0;
+
+        if(flash_period_count == flash_period) {
+            HAL_GPIO_TogglePin(led_GPIOx,led_GPIO_Pin);
+            flash_period_count = 0;
+        }
+        else {
+            flash_period_count++;
+        }
+        
         break;
     default:
         break;
     }
+}
+
+void Led::set_flash_period(unsigned int flash_period) {
+    this->flash_period = flash_period;
 }

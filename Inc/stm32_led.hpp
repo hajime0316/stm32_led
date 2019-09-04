@@ -19,6 +19,7 @@ private:
 	GPIO_TypeDef* led_GPIOx;
 	uint16_t led_GPIO_Pin;
 	GPIO_PinState led_on_pin_state = GPIO_PIN_SET;
+	unsigned int flash_period = 0;
 public:
 	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
 	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
@@ -26,6 +27,7 @@ public:
 	void setOff();
 	void setFlash();
 	void interrut_toutine();
+	void set_flash_period(unsigned int flash_period);
 };
 
 #endif /* STM32_LED_HPP_ */
