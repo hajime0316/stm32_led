@@ -7,6 +7,8 @@
 
 #include"stm32_led.hpp"
 
+#define led_off_pin_state (led_on_pin_state==GPIO_PIN_SET ? GPIO_PIN_RESET : GPIO_PIN_SET)
+
 Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
     state = LED_OFF;
     led_GPIOx = GPIOx;
