@@ -1,6 +1,7 @@
 #include "cppmain.hpp"
 
 #include "main.h"
+#include "tim.h"
 #include "gpio.h"
 
 #include "stm32_led.hpp"
