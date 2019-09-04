@@ -62,3 +62,7 @@ void Led::interrut_toutine(){
         break;
     }
 }
+
+void Led::set_flash_period(unsigned int flash_period) {
+    this->flash_period = flash_period;
+}
