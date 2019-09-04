@@ -13,6 +13,8 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
     state = LED_OFF;
     led_GPIOx = GPIOx;
     led_GPIO_Pin = GPIO_Pin;
+
+    HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
 }
 Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) {
     state = LED_OFF;
@@ -20,6 +22,7 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) 
     led_GPIO_Pin = GPIO_Pin;
 
     this->led_on_pin_state = led_on_pin_state;
+    HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
 }
 
 void Led::setOn(){
