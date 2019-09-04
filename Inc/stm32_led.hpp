@@ -11,7 +11,11 @@
 
 class Led {
 private:
-	int state;
+	enum {
+		LED_ON,
+		LED_OFF,
+		LED_FLASH
+	} state;
 	GPIO_TypeDef* led_GPIOx;
 	uint16_t led_GPIO_Pin;
 public:
