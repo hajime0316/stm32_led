@@ -18,7 +18,7 @@ private:
 	} state;
 	GPIO_TypeDef* led_GPIOx;
 	uint16_t led_GPIO_Pin;
-	GPIO_PinState led_on_pin_state;
+	GPIO_PinState led_on_pin_state = GPIO_PIN_SET;
 public:
 	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
 	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
