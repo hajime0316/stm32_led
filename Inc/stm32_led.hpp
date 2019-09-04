@@ -26,8 +26,22 @@ public:
 	void setOn();
 	void setOff();
 	void setFlash();
-	void interrut_toutine();
+	// void interrut_toutine();
 	void set_flash_period(unsigned int flash_period);
+
+	// LEDモジュールの割り込みハンドラ
+    // TIM割り込み関数の中でコール
+    static void interrupt_handler();
+
+	private:
+    // 全インスタンスにアクセスするためのポインタ．
+    // 割り込みルーチンの中で使う．
+    Led        *previous_instance_p;    // 自身の前に生成されたインスタンスへのポインタ
+                                        // 前のインスタンスがない場合はnull
+    static Led *last_instance_p;        // 最後に生成したインスタンスへのポインタ
+
+    // interrupt_handler関数から呼び出される関数
+    void interrut_toutine();
 };
 
 #endif /* STM32_LED_HPP_ */
