@@ -33,6 +33,27 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) 
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
 }
 
+Led::~Led() {
+    if(last_instance_p == nullptr) return;
+
+    if(last_instance_p == this) {
+        last_instance_p = this->previous_instance_p;
+        return;
+    }
+
+    Led *i_p = last_instance_p;
+    while(true) {
+        if(i_p->previous_instance_p == this) {
+            i_p->previous_instance_p = this->previous_instance_p;
+            return;
+        }
+        else {
+            i_p = i_p->previous_instance_p;
+            continue;
+        }
+    }
+}
+
 void Led::setOn(){
     state=LED_ON;
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_on_pin_state);
