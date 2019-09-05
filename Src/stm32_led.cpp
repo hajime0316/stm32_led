@@ -16,12 +16,18 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
     led_GPIOx = GPIOx;
     led_GPIO_Pin = GPIO_Pin;
 
+    previous_instance_p = last_instance_p; 
+    last_instance_p = this;
+
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
 }
 Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) {
     state = LED_OFF;
     led_GPIOx = GPIOx;
     led_GPIO_Pin = GPIO_Pin;
+
+    previous_instance_p = last_instance_p; 
+    last_instance_p = this;
 
     this->led_on_pin_state = led_on_pin_state;
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
