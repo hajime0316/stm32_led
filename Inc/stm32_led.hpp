@@ -23,6 +23,7 @@ private:
 public:
 	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
 	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
+	~Led();
 	void setOn();
 	void setOff();
 	void setFlash();
