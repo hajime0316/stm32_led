@@ -66,3 +66,11 @@ void Led::interrut_toutine(){
 void Led::set_flash_period(unsigned int flash_period) {
     this->flash_period = flash_period;
 }
+
+void Led::interrupt_handler() {
+    if(last_instance_p == nullptr) return;
+
+    last_instance_p->interrut_toutine();
+
+    return;
+}
