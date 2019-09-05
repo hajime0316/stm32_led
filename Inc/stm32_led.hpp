@@ -33,7 +33,7 @@ public:
     // TIM割り込み関数の中でコール
     static void interrupt_handler();
 
-	private:
+private:
     // 全インスタンスにアクセスするためのポインタ．
     // 割り込みルーチンの中で使う．
     Led        *previous_instance_p;    // 自身の前に生成されたインスタンスへのポインタ
