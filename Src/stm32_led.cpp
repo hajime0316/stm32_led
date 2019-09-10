@@ -66,7 +66,7 @@ void Led::setFlash(){
     state=LED_FLASH;
 }
 
-void Led::interrut_toutine(){
+void Led::interrupt_routine(){
     switch (state)
     {
     case LED_ON:
@@ -93,7 +93,7 @@ void Led::interrut_toutine(){
 
     if(previous_instance_p == nullptr) return;
 
-    previous_instance_p->interrut_toutine();
+    previous_instance_p->interrupt_routine();
 }
 
 void Led::set_flash_period(unsigned int flash_period) {
@@ -103,7 +103,7 @@ void Led::set_flash_period(unsigned int flash_period) {
 void Led::interrupt_handler() {
     if(last_instance_p == nullptr) return;
 
-    last_instance_p->interrut_toutine();
+    last_instance_p->interrupt_routine();
 
     return;
 }
