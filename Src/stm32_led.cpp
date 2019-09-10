@@ -9,9 +9,9 @@
 
 #define led_off_pin_state (led_on_pin_state==GPIO_PIN_SET ? GPIO_PIN_RESET : GPIO_PIN_SET)
 
-Led *Led::last_instance_p = nullptr;
+Stm32Led *Stm32Led::last_instance_p = nullptr;
 
-Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
+Stm32Led::Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
     state = LED_OFF;
     led_GPIOx = GPIOx;
     led_GPIO_Pin = GPIO_Pin;
@@ -21,7 +21,7 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
 
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
 }
-Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) {
+Stm32Led::Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) {
     state = LED_OFF;
     led_GPIOx = GPIOx;
     led_GPIO_Pin = GPIO_Pin;
@@ -33,7 +33,7 @@ Led::Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state) 
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
 }
 
-Led::~Led() {
+Stm32Led::~Stm32Led() {
     if(last_instance_p == nullptr) return;
 
     if(last_instance_p == this) {
@@ -41,7 +41,7 @@ Led::~Led() {
         return;
     }
 
-    Led *i_p = last_instance_p;
+    Stm32Led *i_p = last_instance_p;
     while(true) {
         if(i_p->previous_instance_p == this) {
             i_p->previous_instance_p = this->previous_instance_p;
@@ -54,19 +54,19 @@ Led::~Led() {
     }
 }
 
-void Led::setOn(){
+void Stm32Led::setOn(){
     state=LED_ON;
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_on_pin_state);
 }
-void Led::setOff(){
+void Stm32Led::setOff(){
     state=LED_OFF;
     HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
 }
-void Led::setFlash(){
+void Stm32Led::setFlash(){
     state=LED_FLASH;
 }
 
-void Led::interrut_toutine(){
+void Stm32Led::interrut_toutine(){
     switch (state)
     {
     case LED_ON:
@@ -96,11 +96,11 @@ void Led::interrut_toutine(){
     previous_instance_p->interrut_toutine();
 }
 
-void Led::set_flash_period(unsigned int flash_period) {
+void Stm32Led::set_flash_period(unsigned int flash_period) {
     this->flash_period = flash_period;
 }
 
-void Led::interrupt_handler() {
+void Stm32Led::interrupt_handler() {
     if(last_instance_p == nullptr) return;
 
     last_instance_p->interrut_toutine();
