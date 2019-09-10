@@ -27,7 +27,7 @@ public:
 	void setOn();
 	void setOff();
 	void setFlash();
-	// void interrut_toutine();
+	// void interrupt_routine();
 	void set_flash_period(unsigned int flash_period);
 
 	// LEDモジュールの割り込みハンドラ
@@ -42,7 +42,7 @@ private:
     static Led *last_instance_p;        // 最後に生成したインスタンスへのポインタ
 
     // interrupt_handler関数から呼び出される関数
-    void interrut_toutine();
+    void interrupt_routine();
 };
 
 #endif /* STM32_LED_HPP_ */
