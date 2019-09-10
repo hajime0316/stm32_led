@@ -28,10 +28,16 @@ void setup(void) {
 
 void loop(void) {
    if(HAL_GPIO_ReadPin(SW_GPIO_Port, SW_Pin) == GPIO_PIN_SET) {
-       led_g.set_flash_period(10);
+        led_b.setOff();
+        led_o.set_flash_period(1);
+        led_r.setOn();
+        led_g.set_flash_period(10);
    }
    else {
-       led_g.set_flash_period(1);
+        led_b.setOn();
+        led_o.set_flash_period(10);
+        led_r.setFlash();
+        led_g.set_flash_period(1);
    }
 }
 
