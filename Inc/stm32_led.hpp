@@ -9,7 +9,7 @@
 #define STM32_LED_HPP_
 #include "main.h"
 
-class Led {
+class Stm32Led {
 private:
 	enum {
 		LED_ON,
@@ -21,9 +21,9 @@ private:
 	GPIO_PinState led_on_pin_state = GPIO_PIN_SET;
 	unsigned int flash_period = 0;
 public:
-	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
-	Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
-	~Led();
+	Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
+	Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
+	~Stm32Led();
 	void setOn();
 	void setOff();
 	void setFlash();
@@ -37,9 +37,9 @@ public:
 private:
     // 全インスタンスにアクセスするためのポインタ．
     // 割り込みルーチンの中で使う．
-    Led        *previous_instance_p;    // 自身の前に生成されたインスタンスへのポインタ
+    Stm32Led        *previous_instance_p;    // 自身の前に生成されたインスタンスへのポインタ
                                         // 前のインスタンスがない場合はnull
-    static Led *last_instance_p;        // 最後に生成したインスタンスへのポインタ
+    static Stm32Led *last_instance_p;        // 最後に生成したインスタンスへのポインタ
 
     // interrupt_handler関数から呼び出される関数
     void interrupt_routine();
