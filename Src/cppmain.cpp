@@ -7,12 +7,11 @@
 #include "stm32_led.hpp"
 
 static Stm32Led led_g(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET);
+static Stm32Led led_b(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_SET);
+static Stm32Led led_r(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_SET);
+static Stm32Led led_o(LED_O_GPIO_Port, LED_O_Pin, GPIO_PIN_SET);
 
 void setup(void) {
-    static Stm32Led led_b(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_SET);
-    static Stm32Led led_r(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_SET);
-    static Stm32Led led_o(LED_O_GPIO_Port, LED_O_Pin, GPIO_PIN_SET);
-
     // タイマスタート
 	HAL_TIM_Base_Start_IT(&htim6);
 
