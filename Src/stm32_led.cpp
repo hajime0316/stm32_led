@@ -66,8 +66,6 @@ void Stm32Led::setFlash(){
     state=LED_FLASH;
 }
 
-// TODO
-// flash_periodの定義を明確にする(0を許容するか?)
 void Stm32Led::setFlash(unsigned int flash_period){
     set_flash_period(flash_period);
     state=LED_FLASH;
