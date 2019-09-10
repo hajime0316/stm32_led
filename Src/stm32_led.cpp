@@ -67,7 +67,6 @@ void Stm32Led::setFlash(){
 }
 
 // TODO
-// 引数ありsetFlash()関数を作る
 // set_flash_periodをプライベート関数にする
 void Stm32Led::setFlash(unsigned int flash_period){
     set_flash_period(flash_period);
