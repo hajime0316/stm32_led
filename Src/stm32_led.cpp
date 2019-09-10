@@ -66,6 +66,10 @@ void Stm32Led::setFlash(){
     state=LED_FLASH;
 }
 
+// TODO
+// 引数ありsetFlash()関数を作る
+// set_flash_periodをプライベート関数にする
+
 void Stm32Led::interrupt_routine(){
     switch (state)
     {
