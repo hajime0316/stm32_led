@@ -21,6 +21,7 @@ private:
 	GPIO_PinState led_on_pin_state = GPIO_PIN_SET;
 	unsigned int flash_period = 0;
 	unsigned int flash_period_count = 0;
+	void set_flash_period(unsigned int flash_period);
 public:
 	Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
 	Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
@@ -30,7 +31,6 @@ public:
 	void setFlash();
 	void setFlash(unsigned int flash_period);
 	// void interrupt_routine();
-	void set_flash_period(unsigned int flash_period);
 
 	// LEDモジュールの割り込みハンドラ
     // TIM割り込み関数の中でコール
