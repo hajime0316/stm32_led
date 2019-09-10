@@ -15,8 +15,9 @@ void setup(void) {
     // タイマスタート
 	HAL_TIM_Base_Start_IT(&htim6);
 
-    led_g.set_flash_period(1);
+    led_o.set_flash_period(10);
     led_r.set_flash_period(2);
+    led_g.set_flash_period(1);
 
     // LEDを点滅させる
     led_b.setOn();
