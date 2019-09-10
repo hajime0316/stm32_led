@@ -28,6 +28,7 @@ public:
 	void setOn();
 	void setOff();
 	void setFlash();
+	void setFlash(unsigned int flash_period);
 	// void interrupt_routine();
 	void set_flash_period(unsigned int flash_period);
 
