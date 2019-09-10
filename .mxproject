@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/shimizu issei/workspace/Led/Inc
+HeaderPath=C:/Users/hajime/Documents/SystemWorkbench/Led/Inc
 HeaderFiles=gpio.h;stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;tim.h;
-SourcePath=C:/Users/shimizu issei/workspace/Led/Src
+SourcePath=C:/Users/hajime/Documents/SystemWorkbench/Led/Src
 SourceFiles=gpio.c;stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;tim.c;
 
 [PreviousLibFiles]
