@@ -76,7 +76,7 @@ void Stm32Led::interrupt_routine(){
         HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
         break;
     case LED_FLASH:
-        if(flash_period_count == flash_period) {
+        if(flash_period_count >= flash_period) {
             HAL_GPIO_TogglePin(led_GPIOx,led_GPIO_Pin);
             flash_period_count = 0;
         }
