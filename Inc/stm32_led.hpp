@@ -11,28 +11,27 @@
 
 class Stm32Led {
 private:
-	enum {
-		LED_ON,
-		LED_OFF,
-		LED_FLASH
-	} state;
-	GPIO_TypeDef* led_GPIOx;
-	uint16_t led_GPIO_Pin;
-	GPIO_PinState led_on_pin_state = GPIO_PIN_SET;
-	unsigned int flash_period = 0;
-	unsigned int flash_period_count = 0;
-	void set_flash_period(unsigned int flash_period);
+    enum {
+        LED_ON,
+        LED_OFF,
+        LED_FLASH
+    } state;
+    GPIO_TypeDef* led_GPIOx;
+    uint16_t led_GPIO_Pin;
+    GPIO_PinState led_on_pin_state = GPIO_PIN_SET;
+    unsigned int flash_period = 0;
+    unsigned int flash_period_count = 0;
+    void set_flash_period(unsigned int flash_period);
 public:
-	Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
-	Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
-	~Stm32Led();
-	void setOn();
-	void setOff();
-	void setFlash();
-	void setFlash(unsigned int flash_period);
-	// void interrupt_routine();
+    Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
+    Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
+    ~Stm32Led();
+    void setOn();
+    void setOff();
+    void setFlash();
+    void setFlash(unsigned int flash_period);
 
-	// LEDモジュールの割り込みハンドラ
+    // LEDモジュールの割り込みハンドラ
     // TIM割り込み関数の中でコール
     static void interrupt_handler();
 
