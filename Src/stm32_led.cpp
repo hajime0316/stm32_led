@@ -11,6 +11,8 @@
 
 Stm32Led *Stm32Led::last_instance_p = nullptr;
 
+// Definition of public function
+
 Stm32Led::Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin) {
     state = LED_OFF;
     led_GPIOx = GPIOx;
@@ -81,6 +83,8 @@ void Stm32Led::interrupt_handler() {
 
     return;
 }
+
+// Definition of private function
 
 void Stm32Led::set_flash_period(unsigned int flash_period) {
     this->flash_period = flash_period;
