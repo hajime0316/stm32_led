@@ -23,7 +23,6 @@ private:
     unsigned int flash_period_count = 0;
     void set_flash_period(unsigned int flash_period);
 public:
-    Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
     Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
     ~Stm32Led();
     void setOn();
