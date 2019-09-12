@@ -1,5 +1,4 @@
-Debug/
-Release/
-.vscode/
-.settings/
-*.cfg
+*
+!.gitignore
+!stm32_led.cpp
+!stm32_led.hpp
