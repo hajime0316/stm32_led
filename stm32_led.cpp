@@ -65,6 +65,20 @@ void Stm32Led::setFlash(unsigned int flash_period){
     state=LED_FLASH;
 }
 
+void Stm32Led::onTemporary(unsigned int temporary_time) {
+    temporary_flag = 1; 
+    this->temporary_time = temporary_time;
+    HAL_GPIO_WritePin(led_GPIOx, led_GPIO_Pin, led_on_pin_state);
+    HAL_GPIO_LockPin(led_GPIOx, led_GPIO_Pin);
+}
+
+void Stm32Led::offTemporary(unsigned int temporary_time) {
+    temporary_flag = 1; 
+    this->temporary_time = temporary_time;
+    HAL_GPIO_WritePin(led_GPIOx, led_GPIO_Pin, led_off_pin_state);
+    HAL_GPIO_LockPin(led_GPIOx, led_GPIO_Pin);
+}
+
 void Stm32Led::interrupt_handler() {
     if(last_instance_p == nullptr) return;
 
