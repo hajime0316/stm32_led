@@ -22,6 +22,10 @@ private:
     unsigned int flash_period = 0;
     unsigned int flash_period_count = 0;
     void set_flash_period(unsigned int flash_period);
+    // on/offTemporaryで使用する変数
+    int temporary_flag = 0; 
+    unsigned int temporary_time = 0;
+    unsigned int temporary_time_count = 0;
 public:
     Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
     ~Stm32Led();
