@@ -29,6 +29,8 @@ public:
     void setOff();
     void setFlash();
     void setFlash(unsigned int flash_period);
+    void onTemporary(unsigned int on_time);
+    void offTemporary(unsigned int off_time);
 
     // LEDモジュールの割り込みハンドラ
     // TIM割り込み関数の中でコール
