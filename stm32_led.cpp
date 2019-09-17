@@ -118,3 +118,13 @@ void Stm32Led::interrupt_routine(){
 
     previous_instance_p->interrupt_routine();
 }
+
+void Stm32Led::WritePin_WithLockCheck(GPIO_PinState pin_state)
+{
+    if(is_lock) {
+        return;
+    }
+    else {
+        HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, pin_state);
+    }
+}
