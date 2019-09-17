@@ -27,7 +27,7 @@ private:
     unsigned int temporary_time = 0;
     unsigned int temporary_time_count = 0;
     // Lock機能を付ける
-    int is_lock;
+    int is_lock = 0;
     void WritePin_WithLockCheck(GPIO_PinState pin_state);
     void lock_pin();
     void unlock_pin();
