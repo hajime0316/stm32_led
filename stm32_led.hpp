@@ -22,6 +22,14 @@ private:
     unsigned int flash_period = 0;
     unsigned int flash_period_count = 0;
     void set_flash_period(unsigned int flash_period);
+    // on/offTemporaryで使用する変数
+    unsigned int temporary_time_count = 0;
+    // Lock機能を付ける
+    int is_lock = 0;
+    void WritePin_WithLockCheck(GPIO_PinState pin_state);
+    void lock_pin();
+    void unlock_pin();
+
 public:
     Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
     ~Stm32Led();
@@ -29,6 +37,8 @@ public:
     void setOff();
     void setFlash();
     void setFlash(unsigned int flash_period);
+    void onTemporary(unsigned int temporary_time);
+    void offTemporary(unsigned int temporary_time);
 
     // LEDモジュールの割り込みハンドラ
     // TIM割り込み関数の中でコール
