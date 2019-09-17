@@ -66,14 +66,12 @@ void Stm32Led::setFlash(unsigned int flash_period){
 }
 
 void Stm32Led::onTemporary(unsigned int temporary_time) {
-    temporary_flag = 1; 
     this->temporary_time_count = temporary_time;
     WritePin_WithLockCheck(led_on_pin_state);
     lock_pin();
 }
 
 void Stm32Led::offTemporary(unsigned int temporary_time) {
-    temporary_flag = 1; 
     this->temporary_time_count = temporary_time;
     WritePin_WithLockCheck(led_off_pin_state);
     lock_pin();
