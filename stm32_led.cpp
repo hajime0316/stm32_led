@@ -116,6 +116,13 @@ void Stm32Led::interrupt_routine(){
         break;
     }
 
+    if(temporary_time_count <= 0) {
+        unlock_pin();
+    }
+    else {
+        temporary_time_count--;
+    }
+
     if(previous_instance_p == nullptr) return;
 
     previous_instance_p->interrupt_routine();
