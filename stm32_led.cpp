@@ -128,3 +128,11 @@ void Stm32Led::WritePin_WithLockCheck(GPIO_PinState pin_state)
         HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, pin_state);
     }
 }
+
+void Stm32Led::lock_pin() {
+    is_lock = 1;
+}
+
+void Stm32Led::unlock_pin() {
+    is_lock = 0;
+}
