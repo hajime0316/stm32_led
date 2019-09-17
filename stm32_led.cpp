@@ -69,12 +69,14 @@ void Stm32Led::onTemporary(unsigned int temporary_time) {
     temporary_flag = 1; 
     this->temporary_time = temporary_time;
     WritePin_WithLockCheck(led_on_pin_state);
+    lock_pin();
 }
 
 void Stm32Led::offTemporary(unsigned int temporary_time) {
     temporary_flag = 1; 
     this->temporary_time = temporary_time;
     WritePin_WithLockCheck(led_off_pin_state);
+    lock_pin();
 }
 
 void Stm32Led::interrupt_handler() {
