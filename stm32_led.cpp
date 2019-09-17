@@ -48,12 +48,12 @@ Stm32Led::~Stm32Led() {
 
 void Stm32Led::setOn(){
     state=LED_ON;
-    HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_on_pin_state);
+    WritePin_WithLockCheck(led_on_pin_state);
 }
 
 void Stm32Led::setOff(){
     state=LED_OFF;
-    HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
+    WritePin_WithLockCheck(led_off_pin_state);
 }
 
 void Stm32Led::setFlash(){
@@ -68,13 +68,13 @@ void Stm32Led::setFlash(unsigned int flash_period){
 void Stm32Led::onTemporary(unsigned int temporary_time) {
     temporary_flag = 1; 
     this->temporary_time = temporary_time;
-    HAL_GPIO_WritePin(led_GPIOx, led_GPIO_Pin, led_on_pin_state);
+    WritePin_WithLockCheck(led_on_pin_state);
 }
 
 void Stm32Led::offTemporary(unsigned int temporary_time) {
     temporary_flag = 1; 
     this->temporary_time = temporary_time;
-    HAL_GPIO_WritePin(led_GPIOx, led_GPIO_Pin, led_off_pin_state);
+    WritePin_WithLockCheck(led_off_pin_state);
 }
 
 void Stm32Led::interrupt_handler() {
@@ -95,10 +95,10 @@ void Stm32Led::interrupt_routine(){
     switch (state)
     {
     case LED_ON:
-        HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_on_pin_state);
+        WritePin_WithLockCheck(led_on_pin_state);
         break;
     case LED_OFF:
-        HAL_GPIO_WritePin(led_GPIOx,led_GPIO_Pin, led_off_pin_state);
+        WritePin_WithLockCheck(led_off_pin_state);
         break;
     case LED_FLASH:
         if(flash_period_count >= flash_period) {
