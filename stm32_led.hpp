@@ -26,6 +26,12 @@ private:
     int temporary_flag = 0; 
     unsigned int temporary_time = 0;
     unsigned int temporary_time_count = 0;
+    // Lock機能を付ける
+    int is_lock;
+    void WritePin_WithLockCheck(GPIO_PinState pin_state);
+    void lock_pin();
+    void unlock_pin();
+
 public:
     Stm32Led(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin, GPIO_PinState led_on_pin_state);
     ~Stm32Led();
