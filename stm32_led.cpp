@@ -77,6 +77,10 @@ void Stm32Led::offTemporary(unsigned int temporary_time) {
     lock_pin();
 }
 
+Stm32Led::State Stm32Led::getState() {
+    return state;
+}
+
 void Stm32Led::interrupt_handler() {
     if(last_instance_p == nullptr) return;
 

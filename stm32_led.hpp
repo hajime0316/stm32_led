@@ -10,12 +10,14 @@
 #include "main.h"
 
 class Stm32Led {
-private:
-    enum {
+public:
+    enum State{
         LED_ON,
         LED_OFF,
         LED_FLASH
-    } state;
+    };
+private:
+    State state;
     GPIO_TypeDef* led_GPIOx;
     uint16_t led_GPIO_Pin;
     GPIO_PinState led_on_pin_state = GPIO_PIN_SET;
@@ -39,6 +41,7 @@ public:
     void setFlash(unsigned int flash_period);
     void onTemporary(unsigned int temporary_time);
     void offTemporary(unsigned int temporary_time);
+    State getState();
 
     // LEDモジュールの割り込みハンドラ
     // TIM割り込み関数の中でコール
