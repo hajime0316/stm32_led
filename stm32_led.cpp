@@ -140,6 +140,16 @@ void Stm32Led::WritePin_WithLockCheck(GPIO_PinState pin_state)
     }
 }
 
+void Stm32Led::TogglePin_WithLockCheck()
+{
+    if(is_lock) {
+        return;
+    }
+    else {
+        HAL_GPIO_TogglePin(led_GPIOx,led_GPIO_Pin);
+    }
+}
+
 void Stm32Led::lock_pin() {
     is_lock = 1;
 }

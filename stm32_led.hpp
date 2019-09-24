@@ -29,6 +29,7 @@ private:
     // Lock機能を付ける
     int is_lock = 0;
     void WritePin_WithLockCheck(GPIO_PinState pin_state);
+    void TogglePin_WithLockCheck();
     void lock_pin();
     void unlock_pin();
 
