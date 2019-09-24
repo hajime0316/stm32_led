@@ -106,7 +106,7 @@ void Stm32Led::interrupt_routine(){
         break;
     case LED_FLASH:
         if(flash_period_count >= flash_period) {
-            HAL_GPIO_TogglePin(led_GPIOx,led_GPIO_Pin);
+            TogglePin_WithLockCheck();
             flash_period_count = 0;
         }
         else {
